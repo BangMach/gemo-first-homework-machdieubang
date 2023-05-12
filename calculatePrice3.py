@@ -3,7 +3,7 @@
 # $0.5 for each extra pump
 # Maximum of 6 pumps
 
-def calculatePrice2(order):
+def calculatePrice3(order):
     # Define the price dictionary
     priceDict = {
         "S": 0,
@@ -109,13 +109,13 @@ def calculatePrice2(order):
 
 
 # new tests
-print(calculatePrice2(["BasedMilktea","Hot", "S", "WithoutWhippedCream","Chocolate Sauce","Chocolate Sauce"])) # Output should be 2.25
-print(calculatePrice2(["BasedMilktea","Hot", "S", "WithoutWhippedCream","Chocolate Sauce","Chocolate Sauce","Chocolate Sauce","Chocolate Sauce"])) # Output should be 3.25
-print(calculatePrice2(["BasedMilktea","Hot", "M", "WithoutWhippedCream","AlmondMilk"])) # Output should be 3.25
-print(calculatePrice2(["BasedMilktea","Hot", "M", "WithoutWhippedCream","WholeMilk"])) # Output should be 2.75
-print(calculatePrice2(["BasedMilktea","XL", "Blended", "WithoutWhippedCream"])) # Output should be 4.75
-print(calculatePrice2(["BasedMilktea","L", "Blended", "WhippedCream"])) # Output should be 4.75
-print(calculatePrice2(["BasedMilktea","L", "Cold", "WithoutWhippedCream"])) # Output should be 3.25
-print(calculatePrice2(["BasedMilktea","L", "Cold", "WhippedCream"])) # Output should be 3.75
-print(calculatePrice2(["BasedMilktea","L", "Hot", "WithoutWhippedCream"])) # Should be an error" Size L only available for Cold and Hot Drink"
-print(calculatePrice2(["BasedMilktea","M", "Blended", "WithoutWhippedCream"])) # Output should be 3.75
+print(calculatePrice3(["BasedMilktea","Hot", "S", "WithoutWhippedCream","Chocolate Sauce","Chocolate Sauce"])) # Output should be 2.25
+print(calculatePrice3(["BasedMilktea","Hot", "S", "WithoutWhippedCream","Chocolate Sauce","Chocolate Sauce","Chocolate Sauce","Chocolate Sauce"])) # Output should be 3.25
+print(calculatePrice3(["BasedMilktea","Hot", "M", "WithoutWhippedCream","AlmondMilk"])) # Output should be 3.25
+print(calculatePrice3(["BasedMilktea","Hot", "M", "WithoutWhippedCream","WholeMilk"])) # Output should be 2.75
+print(calculatePrice3(["BasedMilktea","XL", "Blended", "WithoutWhippedCream"])) # Output should be 4.75
+print(calculatePrice3(["BasedMilktea","L", "Blended", "WhippedCream"])) # Output should be 4.75
+print(calculatePrice3(["BasedMilktea","L", "Cold", "WithoutWhippedCream"])) # Output should be 3.25
+print(calculatePrice3(["BasedMilktea","L", "Cold", "WhippedCream"])) # Output should be 3.75
+print(calculatePrice3(["BasedMilktea","L", "Hot", "WithoutWhippedCream"])) # Should be an error" Size L only available for Cold and Hot Drink"
+print(calculatePrice3(["BasedMilktea","M", "Blended", "WithoutWhippedCream"])) # Output should be 3.75
