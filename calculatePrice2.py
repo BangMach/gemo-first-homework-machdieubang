@@ -37,16 +37,6 @@ def calculatePrice2(order):
     # Check for drink type and adjust base price
     if "Hot" in order:
         basePrice = basePrice + priceDict["Hot"]
-        # if "chocolateSauce" in order:
-        #     for item in order:
-        #         if item == "ChocolateSauce":
-        #             num_of_chocolate_pump+=1
-        #             if num_of_chocolate_pump <= 2:
-        #                 continue
-        #             elif num_of_chocolate_pump <= 6:
-        #                 base_price += priceDict["Chocolate Sauce"]
-        #             else:
-        #                 break 
     elif "Cold" in order:
         basePrice = basePrice + priceDict["Cold"]
     elif "Blended" in order:
