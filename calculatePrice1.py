@@ -15,7 +15,7 @@ def calculatePrice1(order):
 
     # Initialize base price to 2.00 dollars
     basePrice = 0
-    
+
     # Check for drink type and adjust base price
     if "Hot" in order:
         basePrice = priceDict["BasedCoffee"]
@@ -24,7 +24,6 @@ def calculatePrice1(order):
     elif "Blended" in order:
         basePrice = priceDict["BasedCoffee"] + priceDict["Blended"]
 
-    
     # Check for size and price adjustment
     if "S" in order:
         sizePrice = priceDict["S"]
@@ -33,9 +32,9 @@ def calculatePrice1(order):
     elif "L" in order and ("Cold" in order or "Blended" in order):
         sizePrice = priceDict["L"]
     else:
-        print("Size L only available for Cold and Hot Drink")
-        return 0
-    
+        print("Size L only available for Cold and blende Drink")
+        raise Exception("Sorry, no numbers below zero")
+
     # Check for whipped cream topping
     if "WithoutWhippedCream" in order:
         creamPrice = priceDict["WithoutWhippedCream"]
@@ -46,23 +45,30 @@ def calculatePrice1(order):
 
     # Calculate total price
     totalPrice = basePrice + sizePrice + creamPrice
-    
+
     return totalPrice
-    
-    
+
+
 # print(calculatePrice1(["S","WithoutWhippedCream", "Hot"])) # Output should be 2.00
 # print(calculatePrice1(["S","WhippedCream", "Hot"])) # Output should be 2.50
 # print(calculatePrice1(["L", "Blended", "WithCreamTopping"])) # Output should be 4.50
 # print(calculatePrice1(["L", "Blended", "WithCreamTopping"])) # Output should be 4.50
 
 
-print(calculatePrice1(["Hot", "S", "WithoutWhippedCream"])) # Output should be 2.0
-print(calculatePrice1(["Hot", "S", "WhippedCream"])) # Output should be 2.5
-print(calculatePrice1(["Hot", "M", "WithoutWhippedCream"])) # Output should be 2.5
-print(calculatePrice1(["Hot", "M", "WhippedCream"])) # Output should be 3.0
-print(calculatePrice1(["L", "Blended", "WithoutWhippedCream"])) # Output should be 4.00
-print(calculatePrice1(["L", "Blended", "WhippedCream"])) # Output should be 4.50
-print(calculatePrice1(["L", "Cold", "WithoutWhippedCream"])) # Output should be 3.00
-print(calculatePrice1(["L", "Cold", "WhippedCream"])) # Output should be 3.50
-print(calculatePrice1(["L", "Hot", "WithoutWhippedCream"])) # Should be an error" Size L only available for Cold and Hot Drink"
-print(calculatePrice1(["M", "Blended", "WithoutWhippedCream"])) # Output should be 3.50
+# Output should be 2.0
+print(calculatePrice1(["Hot", "S", "WithoutWhippedCream"]))
+print(calculatePrice1(["Hot", "S", "WhippedCream"]))  # Output should be 2.5
+# Output should be 2.5
+print(calculatePrice1(["Hot", "M", "WithoutWhippedCream"]))
+print(calculatePrice1(["Hot", "M", "WhippedCream"]))  # Output should be 3.0
+# Output should be 4.00
+print(calculatePrice1(["L", "Blended", "WithoutWhippedCream"]))
+# Output should be 4.50
+print(calculatePrice1(["L", "Blended", "WhippedCream"]))
+# Output should be 3.00
+print(calculatePrice1(["L", "Cold", "WithoutWhippedCream"]))
+print(calculatePrice1(["L", "Cold", "WhippedCream"]))  # Output should be 3.50
+# Should be an error" Size L only available for Cold and Hot Drink"
+print(calculatePrice1(["L", "Hot", "WithoutWhippedCream"]))
+# Output should be 3.50
+print(calculatePrice1(["M", "Blended", "WithoutWhippedCream"]))

@@ -19,19 +19,18 @@ def calculatePrice3(order):
         "BasedMilktea": 2.25,
         "AlmondMilk": 0.5,
         "WholeMilk": 0,
-        "Chocolate Sauce":0.5  
+        "Chocolate Sauce": 0.5
     }
-    
+
     # Initialize base price to 0
     basePrice = 0
-    num_of_chocolate_pump =0
-    
-    #check based drink
+    num_of_chocolate_pump = 0
+
+    # check based drink
     if "BasedMilktea" in order:
         basePrice = priceDict["BasedMilktea"]
     elif "BasedCoffee" in order:
         basePrice = priceDict["BasedCoffee"]
-
 
     # Check for drink type and adjust base price
     if "Hot" in order:
@@ -39,19 +38,18 @@ def calculatePrice3(order):
         if "Chocolate Sauce" in order:
             for item in order:
                 if item == "Chocolate Sauce":
-                    num_of_chocolate_pump+=1
+                    num_of_chocolate_pump += 1
                     if num_of_chocolate_pump <= 2:
                         continue
                     elif num_of_chocolate_pump <= 6:
                         basePrice += priceDict["Chocolate Sauce"]
                     else:
-                        break 
+                        break
     elif "Cold" in order:
         basePrice = basePrice + priceDict["Cold"]
     elif "Blended" in order:
         basePrice = basePrice + priceDict["Blended"]
-        
-    
+
     # Check for size and price adjustment
     if "S" in order:
         sizePrice = priceDict["S"]
@@ -63,8 +61,8 @@ def calculatePrice3(order):
         sizePrice = priceDict["XL"]
     else:
         print("Size L only available for Cold and Hot Drink")
-        return 0    
-        
+        return 0
+
     # Check for whipped cream topping
     if "WithoutWhippedCream" in order:
         creamPrice = priceDict["WithoutWhippedCream"]
@@ -72,20 +70,20 @@ def calculatePrice3(order):
         creamPrice = priceDict["WhippedCream"]
     else:
         creamPrice = 0
-    
+
     # Check for milk options
     milkPrice = 0
     if "AlmondMilk" in order:
         milkPrice += priceDict["AlmondMilk"]
     if "WholeMilk" in order:
         milkPrice += priceDict["WholeMilk"]
-    
+
     # Calculate total price
     totalPrice = basePrice + sizePrice + creamPrice + milkPrice
-    
+
     return totalPrice
-    
-    
+
+
 # print(calculatePrice2(["Hot", "M", "WhippedCream"])) # Output should be 2.5
 # print(calculatePrice2(["Cold", "L", "WithoutWhippedCream"])) # Output should be 3.0
 # print(calculatePrice2(["Blended", "XL", "AlmondMilk", "WithCreamTopping"])) # Output should be 6.0
@@ -109,13 +107,25 @@ def calculatePrice3(order):
 
 
 # new tests
-print(calculatePrice3(["BasedMilktea","Hot", "S", "WithoutWhippedCream","Chocolate Sauce","Chocolate Sauce"])) # Output should be 2.25
-print(calculatePrice3(["BasedMilktea","Hot", "S", "WithoutWhippedCream","Chocolate Sauce","Chocolate Sauce","Chocolate Sauce","Chocolate Sauce"])) # Output should be 3.25
-print(calculatePrice3(["BasedMilktea","Hot", "M", "WithoutWhippedCream","AlmondMilk"])) # Output should be 3.25
-print(calculatePrice3(["BasedMilktea","Hot", "M", "WithoutWhippedCream","WholeMilk"])) # Output should be 2.75
-print(calculatePrice3(["BasedMilktea","XL", "Blended", "WithoutWhippedCream"])) # Output should be 4.75
-print(calculatePrice3(["BasedMilktea","L", "Blended", "WhippedCream"])) # Output should be 4.75
-print(calculatePrice3(["BasedMilktea","L", "Cold", "WithoutWhippedCream"])) # Output should be 3.25
-print(calculatePrice3(["BasedMilktea","L", "Cold", "WhippedCream"])) # Output should be 3.75
-print(calculatePrice3(["BasedMilktea","L", "Hot", "WithoutWhippedCream"])) # Should be an error" Size L only available for Cold and Hot Drink"
-print(calculatePrice3(["BasedMilktea","M", "Blended", "WithoutWhippedCream"])) # Output should be 3.75
+print(calculatePrice3(["BasedMilktea", "Hot", "S", "WithoutWhippedCream",
+      "Chocolate Sauce", "Chocolate Sauce"]))  # Output should be 2.25
+print(calculatePrice3(["BasedMilktea", "Hot", "S", "WithoutWhippedCream", "Chocolate Sauce",
+      "Chocolate Sauce", "Chocolate Sauce", "Chocolate Sauce"]))  # Output should be 3.25
+# Output should be 3.25
+print(calculatePrice3(["BasedMilktea", "Hot",
+      "M", "WithoutWhippedCream", "AlmondMilk"]))
+# Output should be 2.75
+print(calculatePrice3(["BasedMilktea", "Hot",
+      "M", "WithoutWhippedCream", "WholeMilk"]))
+print(calculatePrice3(["BasedMilktea", "XL", "Blended",
+      "WithoutWhippedCream"]))  # Output should be 4.75
+# Output should be 4.75
+print(calculatePrice3(["BasedMilktea", "L", "Blended", "WhippedCream"]))
+# Output should be 3.25
+print(calculatePrice3(["BasedMilktea", "L", "Cold", "WithoutWhippedCream"]))
+# Output should be 3.75
+print(calculatePrice3(["BasedMilktea", "L", "Cold", "WhippedCream"]))
+# Should be an error" Size L only available for Cold and Hot Drink"
+print(calculatePrice3(["BasedMilktea", "L", "Hot", "WithoutWhippedCream"]))
+# Output should be 3.75
+print(calculatePrice3(["BasedMilktea", "M", "Blended", "WithoutWhippedCream"]))

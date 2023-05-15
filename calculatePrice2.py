@@ -21,18 +21,16 @@ def calculatePrice2(order):
         "AlmondMilk": 0.5,
         "WholeMilk": 0,
     }
-    
+
     # Initialize base price to 0
     basePrice = 0
-    #num_of_chocolate_pump =0
-    
-    
-    #check based drink
+    # num_of_chocolate_pump =0
+
+    # check based drink
     if "BasedMilktea" in order:
         basePrice = priceDict["BasedMilktea"]
     elif "BasedCoffee" in order:
         basePrice = priceDict["BasedCoffee"]
-
 
     # Check for drink type and adjust base price
     if "Hot" in order:
@@ -41,8 +39,7 @@ def calculatePrice2(order):
         basePrice = basePrice + priceDict["Cold"]
     elif "Blended" in order:
         basePrice = basePrice + priceDict["Blended"]
-        
-    
+
     # Check for size and price adjustment
     if "S" in order:
         sizePrice = priceDict["S"]
@@ -54,8 +51,8 @@ def calculatePrice2(order):
         sizePrice = priceDict["XL"]
     else:
         print("Size L only available for Cold and Hot Drink")
-        return 0    
-        
+        return 0
+
     # Check for whipped cream topping
     if "WithoutWhippedCream" in order:
         creamPrice = priceDict["WithoutWhippedCream"]
@@ -63,20 +60,20 @@ def calculatePrice2(order):
         creamPrice = priceDict["WhippedCream"]
     else:
         creamPrice = 0
-    
+
     # Check for milk options
     milkPrice = 0
     if "AlmondMilk" in order:
         milkPrice += priceDict["AlmondMilk"]
     if "WholeMilk" in order:
         milkPrice += priceDict["WholeMilk"]
-    
+
     # Calculate total price
     totalPrice = basePrice + sizePrice + creamPrice + milkPrice
-    
+
     return totalPrice
-    
-    
+
+
 # print(calculatePrice2(["Hot", "M", "WhippedCream"])) # Output should be 2.5
 # print(calculatePrice2(["Cold", "L", "WithoutWhippedCream"])) # Output should be 3.0
 # print(calculatePrice2(["Blended", "XL", "AlmondMilk", "WithCreamTopping"])) # Output should be 6.0
@@ -100,13 +97,25 @@ def calculatePrice2(order):
 
 
 # new tests
-print(calculatePrice2(["BasedMilktea","Hot", "S", "WithoutWhippedCream"])) # Output should be 2.25
-print(calculatePrice2(["BasedMilktea","Hot", "S", "WhippedCream"])) # Output should be 2.75
-print(calculatePrice2(["BasedMilktea","Hot", "M", "WithoutWhippedCream","AlmondMilk"])) # Output should be 3.25
-print(calculatePrice2(["BasedMilktea","Hot", "M", "WithoutWhippedCream","WholeMilk"])) # Output should be 2.75
-print(calculatePrice2(["BasedMilktea","XL", "Blended", "WithoutWhippedCream"])) # Output should be 4.75
-print(calculatePrice2(["BasedMilktea","L", "Blended", "WhippedCream"])) # Output should be 4.75
-print(calculatePrice2(["BasedMilktea","L", "Cold", "WithoutWhippedCream"])) # Output should be 3.25
-print(calculatePrice2(["BasedMilktea","L", "Cold", "WhippedCream"])) # Output should be 3.75
-print(calculatePrice2(["BasedMilktea","L", "Hot", "WithoutWhippedCream"])) # Should be an error" Size L only available for Cold and Hot Drink"
-print(calculatePrice2(["BasedMilktea","M", "Blended", "WithoutWhippedCream"])) # Output should be 3.75
+# Output should be 2.25
+print(calculatePrice2(["BasedMilktea", "Hot", "S", "WithoutWhippedCream"]))
+# Output should be 2.75
+print(calculatePrice2(["BasedMilktea", "Hot", "S", "WhippedCream"]))
+# Output should be 3.25
+print(calculatePrice2(["BasedMilktea", "Hot",
+      "M", "WithoutWhippedCream", "AlmondMilk"]))
+# Output should be 2.75
+print(calculatePrice2(["BasedMilktea", "Hot",
+      "M", "WithoutWhippedCream", "WholeMilk"]))
+print(calculatePrice2(["BasedMilktea", "XL", "Blended",
+      "WithoutWhippedCream"]))  # Output should be 4.75
+# Output should be 4.75
+print(calculatePrice2(["BasedMilktea", "L", "Blended", "WhippedCream"]))
+# Output should be 3.25
+print(calculatePrice2(["BasedMilktea", "L", "Cold", "WithoutWhippedCream"]))
+# Output should be 3.75
+print(calculatePrice2(["BasedMilktea", "L", "Cold", "WhippedCream"]))
+# Should be an error" Size L only available for Cold and Hot Drink"
+print(calculatePrice2(["BasedMilktea", "L", "Hot", "WithoutWhippedCream"]))
+# Output should be 3.75
+print(calculatePrice2(["BasedMilktea", "M", "Blended", "WithoutWhippedCream"]))

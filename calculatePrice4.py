@@ -20,22 +20,22 @@ def calculatePrice4(order):
         "BasedMilktea": 2.25,
         "AlmondMilk": 0.5,
         "WholeMilk": 0,
-        "Chocolate Sauce":0.5,
+        "Chocolate Sauce": 0.5,
         "Sandwich": 3,
         "Bagel": 3,
         "Egg": 1,
         "Turkey": 1,
         "Butter": 0.5,
-        "Cream Cheese": 0.5    
+        "Cream Cheese": 0.5
     }
-    
+
     # Initialize base price to 0
     basePrice = 0
-    num_of_chocolate_pump =0
+    num_of_chocolate_pump = 0
     foodPrice = 0
-    
+
     if "Hot" in order or "Cold" in order or "Blended" in order:
-        #check based drink
+        # check based drink
         if "BasedMilktea" in order:
             basePrice = priceDict["BasedMilktea"]
         elif "BasedCoffee" in order:
@@ -46,13 +46,13 @@ def calculatePrice4(order):
             if "Chocolate Sauce" in order:
                 for item in order:
                     if item == "Chocolate Sauce":
-                        num_of_chocolate_pump+=1
+                        num_of_chocolate_pump += 1
                         if num_of_chocolate_pump <= 2:
                             continue
                         elif num_of_chocolate_pump <= 6:
                             basePrice += priceDict["Chocolate Sauce"]
                         else:
-                            break 
+                            break
         elif "Cold" in order:
             basePrice = basePrice + priceDict["Cold"]
         elif "Blended" in order:
@@ -70,8 +70,8 @@ def calculatePrice4(order):
             elif "Cream Cheese" in order:
                 foodPrice += priceDict["Cream Cheese"]
         else:
-            foodPrice += 0 
-    
+            foodPrice += 0
+
     # Check for size and price adjustment
     if "S" in order:
         sizePrice = priceDict["S"]
@@ -83,8 +83,8 @@ def calculatePrice4(order):
         sizePrice = priceDict["XL"]
     else:
         print("Size L only available for Cold and Hot Drink")
-        return 0    
-        
+        return 0
+
     # Check for whipped cream topping
     if "WithoutWhippedCream" in order:
         creamPrice = priceDict["WithoutWhippedCream"]
@@ -92,20 +92,20 @@ def calculatePrice4(order):
         creamPrice = priceDict["WhippedCream"]
     else:
         creamPrice = 0
-    
+
     # Check for milk options
     milkPrice = 0
     if "AlmondMilk" in order:
         milkPrice += priceDict["AlmondMilk"]
     if "WholeMilk" in order:
         milkPrice += priceDict["WholeMilk"]
-    
+
     # Calculate total price
     totalPrice = basePrice + sizePrice + creamPrice + milkPrice + foodPrice
-    
+
     return totalPrice
-    
-    
+
+
 # print(calculatePrice2(["Hot", "M", "WhippedCream"])) # Output should be 2.5
 # print(calculatePrice2(["Cold", "L", "WithoutWhippedCream"])) # Output should be 3.0
 # print(calculatePrice2(["Blended", "XL", "AlmondMilk", "WithCreamTopping"])) # Output should be 6.0
@@ -140,4 +140,12 @@ def calculatePrice4(order):
 # print(calculatePrice4(["BasedMilktea","L", "Hot", "WithoutWhippedCream"])) # Should be an error" Size L only available for Cold and Hot Drink"
 # print(calculatePrice4(["BasedMilktea","M", "Blended", "WithoutWhippedCream"])) # Output should be 3.75
 
-print(calculatePrice4(["BasedMilktea","L", "Cold", "WhippedCream","Sandwich","Egg"])) # Output should be 7.75
+print(calculatePrice4(["BasedMilktea", "L", "Cold",
+      "WhippedCream", "Sandwich", "Egg"]))  # Output should be 7.75
+print(calculatePrice4(["BasedMilktea", "L", "Cold",
+      "WhippedCream", "Sandwich", "Turkey"]))  # Output should be 7.75
+
+print(calculatePrice4(["BasedMilktea", "L", "Cold",
+      "WhippedCream", "Bagel", "Butter"]))  # Output should be 7.75
+print(calculatePrice4(["BasedMilktea", "L", "Cold", "WhippedCream",
+      "Bagel", "Cream Cheese"]))  # Output should be 7.75
