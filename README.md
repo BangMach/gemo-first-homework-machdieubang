@@ -1,7 +1,7 @@
 # gemo-first-homework-machdieubang-submission
 
-## Project Name: Order Calculator
-## Description
+# Project Name: Order Calculator
+# Description
 The Order Calculator is a Python program that allows users to input their order choices and calculates the total cost of their order. The program uses a dictionary to store a key-value pair of order items and their corresponding prices. It then takes in an array of order choices and adds the price of each choice to the total cost.
 
 # Installation
@@ -26,12 +26,11 @@ Solution 4, is another if condition entirely, where I initialize another variabl
 
 Solution 5, is the final and tricky one, because for each condition that it pass, I have to print the price adjustment that comes a long with it, for example in chocolate sauce, after two times, then I will start print out the cost and add in the final cost statement with the taxes inlcuded.
 
-Limitations
+# Limitations
 One limitation of the Order Calculator is that it can only collect one drink order and one food item at a time in the array. If you add more than 1 bagel, for example, it will not accept.
 
-Future Improvements
+# Future Improvements
 Possible improvements for the Order Calculator include:
-
 Allowing users to enter multiple items of the same order type (e.g. 2 bagels)
 Adding more order items to the dictionary
 Adding support for different currencies
