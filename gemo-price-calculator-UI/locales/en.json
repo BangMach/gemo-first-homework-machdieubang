@@ -1,0 +1,26 @@
+{
+    "size": {
+      "label": "Size",
+      "small": "Small",
+      "medium": "Medium",
+      "large": "Large",
+      "extraLarge": "Extra Large"
+    },
+    "beverage": {
+      "label": "Beverage",
+      "coffee": "Coffee",
+      "milkTea": "Milk Tea"
+    },
+    "topping": {
+      "label": "Topping",
+      "whippedCream": "Whipped Cream",
+      "chocolateSauce": "Chocolate Sauce"
+    },
+    "milkType": {
+      "label": "Milk Type",
+      "wholeMilk": "Whole Milk",
+      "almondMilk": "Almond Milk"
+    },
+    "calculate": "Calculate"
+  }
+  

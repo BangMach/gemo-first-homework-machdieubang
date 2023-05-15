@@ -1,0 +1,25 @@
+{
+    "size": {
+      "label": "Kích thước",
+      "small": "Nhỏ",
+      "medium": "Vừa",
+      "large": "Lớn",
+      "extraLarge": "Cực Lớn"
+    },
+    "beverage": {
+      "label": "Đồ uống",
+      "coffee": "Cà phê",
+      "milkTea": "Trà sữa"
+    },
+    "topping": {
+      "label": "Topping",
+      "whippedCream": "Whipped Cream",
+      "chocolateSauce": "Sốt Chocolate"
+    },
+    "milkType": {
+      "label": "Loại sữa",
+      "wholeMilk": "Sữa tươi",
+      "almondMilk": "Sữa hạnh nhân"
+    },
+    "calculate": "Tính giá"
+  }
