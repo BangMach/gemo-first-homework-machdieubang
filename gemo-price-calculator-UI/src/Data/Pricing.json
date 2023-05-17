@@ -1,0 +1,22 @@
+{
+    "S": 0,
+    "M": 0.5,
+    "L": 1,
+    "WithoutWhippedCream": 0,
+    "WhippedCream": 0.5,
+    "Hot": 0,
+    "Cold": 0,
+    "Blended": 1,
+    "XL": 1.5,
+    "BasedCoffee": 2,
+    "BasedMilktea": 2.25,
+    "AlmondMilk": 0.5,
+    "WholeMilk": 0,
+    "Chocolate Sauce": 0.5,
+    "Sandwich": 3,
+    "Bagel": 3,
+    "Egg": 1,
+    "Turkey": 1,
+    "Butter": 0.5,
+    "Cream Cheese": 0.5
+}

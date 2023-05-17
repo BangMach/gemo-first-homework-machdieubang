@@ -2,12 +2,16 @@ import "./App.css"
 
 import React, { useState } from "react"
 
+import PricingComponent from './PricingComponent';
 // Import your translation files
 import enTranslation from "../locales/en.json"
 import i18n from "i18next"
 import { initReactI18next } from "react-i18next"
 import viTranslation from "../locales/vi.json"
 
+interface Pricing {
+  [key: string]: number;
+}
 // Configure i18next
 i18n.use(initReactI18next).init({
   resources: {
@@ -34,14 +38,15 @@ function App() {
   const [milk, setMilk] = useState("")
   const [drinkTemp, setDrinkTemp] = useState("")
   const [errorMessage, setErrorMessage] = useState("")
-
+  const [pricing, setPricing] = useState<Pricing | null>(null);
   const updatePrice = () => {
     let price = 0
 
-    if (size === "small") {
+    if (size === "small" || size === "medium") {
+      if (drinkTemp == "Cold" || drinkTemp == "Blended") {
+        setErrorMessage("Cold only comes in size L or XL")
+      }
       price += 0
-    } else if (size === "medium") {
-      price += 0.5
     } else if (size === "large") {
       price += 1
     } else if (size === "xl") {
@@ -54,21 +59,23 @@ function App() {
       price += 2.25
     }
 
-    if (drinkTemp === "Hot" && chocolateSauce <= 2) {
-      // First two pumps are free for hot drinks
-      price += 0
-    } else if (
-      drinkTemp === "Hot" &&
-      chocolateSauce > 2 &&
-      chocolateSauce <= 6
-    ) {
-      // Each additional pump after the second one costs 0.5
-      price += (chocolateSauce - 2) * 0.5
-    } else if (drinkTemp == "Blended") {
+    if (drinkTemp === "Hot") {
+    if(chocolateSauce<2){
+      price +=0;
+    } else if(chocolateSauce>2 && chocolateSauce<6)
+    {
+      price +=(chocolateSauce-2)*0.5;
+    
+    } else{
+      setErrorMessage("Chocolate Sauce can't be more than 6. Has to be lower than 6")
+    }
+    
+     
+    }else if (drinkTemp == "Cold") {
       price += 1
-    } else if (drinkTemp != "Hot" && chocolateSauce >= 0) {
-      // Display an error message when chocolate sauce is added to a cold drink
-      setErrorMessage("Only hot drinks can have chocolate sauce")
+    } 
+    else if (drinkTemp == "Blended") {
+      price += 1
     }
 
     if (whipCream) {
@@ -92,6 +99,12 @@ function App() {
     setSize(event.target.value)
     updatePrice()
   }
+  
+  
+  const handleDrinkTempChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setDrinkTemp(event.target.value)
+    updatePrice()
+  }  
 
   const handleBeverageTypeChange = (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -107,8 +120,9 @@ function App() {
     updatePrice()
   }
 
-  const handleMilkChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleMilkChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setMilk(event.target.value)
+    updatePrice();
   }
 
   const handleChocolateSauceChange = (
@@ -121,7 +135,6 @@ function App() {
   return (
     <div className="App">
       <h1>Price Calculator</h1>
-      {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Display the error message if it exists */}
 
       <div className="form-container">
         <div className="form-row">
@@ -139,7 +152,20 @@ function App() {
             <option value="xl">XL</option>
           </select>
         </div>
-
+        <div className="form-row">
+          <label htmlFor="drinkTemp">Drink Temperature Type:</label>
+          <select
+            id="drinkTemp"
+            name="drinkTemp"
+            value={drinkTemp}
+            onChange={handleDrinkTempChange}
+          >
+            <option value="">Select a drink temperature type</option>
+            <option value="Hot">Hot</option>
+            <option value="Cold">Cold</option>
+            <option value="Blended">Blended</option>
+          </select>
+        </div>
         <div className="form-row">
           <label htmlFor="beverageType">Beverage Type:</label>
           <select
@@ -153,7 +179,6 @@ function App() {
             <option value="milktea">Milk Tea</option>
           </select>
         </div>
-
         <div className="form-row">
           <label htmlFor="whipCream">Add WhipCream:</label>
           <input
@@ -164,7 +189,19 @@ function App() {
             onChange={handleWhipCreamChange}
           />
         </div>
-
+        <div className="form-row">
+          <label htmlFor="milk">Beverage Type:</label>
+          <select
+            id="milk"
+            name="milk"
+            value={milk}
+            onChange={handleMilkChange}
+          >
+            <option value="">Select a milk type</option>
+            <option value="Whole Milk">Whole Milk</option>
+            <option value="Almond Milk">Almond Milk</option>
+          </select>
+        </div>
         <div className="form-row">
           <label htmlFor="chocolateSauce">Add Chocolate Sauce:</label>
           <input
@@ -177,7 +214,8 @@ function App() {
             onChange={handleChocolateSauceChange}
           />
         </div>
-
+        {errorMessage && <p className="error-message">{errorMessage}</p>}{" "}
+        {/* Display the error message if it exists */}
         <div className="form-row">
           <h2>Price: {price.toFixed(2)} USD</h2>
         </div>
